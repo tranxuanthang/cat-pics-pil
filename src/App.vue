@@ -85,10 +85,6 @@ export default {
 </script>
 
 <style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .hideSvgSoThatItSupportsFirefox {
   border: 0;
   clip: rect(0 0 0 0);
