@@ -5,7 +5,7 @@
 
   <svg class='hideSvgSoThatItSupportsFirefox'>
     <filter id='sharpBlur'>
-      <feGaussianBlur stdDeviation='6'></feGaussianBlur>
+      <feGaussianBlur stdDeviation='12'></feGaussianBlur>
       <feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 9 0'></feColorMatrix>
       <feComposite in2='SourceGraphic' operator='in'></feComposite>
     </filter>
@@ -17,11 +17,13 @@
       :key="index"
       >
       <span
-        class="inline-flex relative pil"
+        class="inline-flex justify-center items-center relative pil"
         :data-index="index"
       >
+        <canvas :width="image.width" :height="image.height" class="max-w-full max-h-full object-contain"></canvas>
+
         <img
-          class="pil-tiny max-w-full max-h-full object-contain"
+          class="pil-tiny absolute top-0 left-0 w-full h-full object-contain"
           :style="`filter: url(#sharpBlur);`"
           :src="require('./assets/images/tiny-' + image.image).default"
           :width="image.width"
