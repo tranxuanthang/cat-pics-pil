@@ -12,7 +12,8 @@
     "core-js": "^3.6.5",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-progressive-img": "https://github.com/tranxuanthang/vue-progressive-img.git"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
