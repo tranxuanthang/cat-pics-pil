@@ -7266,7 +7266,7 @@ vue-loader@^16.1.2:
 
 "vue-progressive-img@https://github.com/tranxuanthang/vue-progressive-img.git":
   version "0.0.1"
-  resolved "https://github.com/tranxuanthang/vue-progressive-img.git#585e02f684b1cb3f4e0edeb6e4fde253123aeb9e"
+  resolved "https://github.com/tranxuanthang/vue-progressive-img.git#e37156676f08a005b76e17e2d4425b181bca87ed"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.3:
   version "4.1.3"
