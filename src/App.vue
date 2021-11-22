@@ -3,31 +3,43 @@
     Pics of cats (with Progressive Image Loading)
   </div>
 
-  <div class="flex flex-col items-center w-full max-w-screen-xl mx-auto">
-    <div
+  <svg class='hideSvgSoThatItSupportsFirefox'>
+    <filter id='sharpBlur'>
+      <feGaussianBlur stdDeviation='6'></feGaussianBlur>
+      <feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 9 0'></feColorMatrix>
+      <feComposite in2='SourceGraphic' operator='in'></feComposite>
+    </filter>
+  </svg>
+
+  <div class="w-full max-w-screen-xl mx-auto">
+    <span class="block flex justify-center max-h-[30vh]"
       v-for="(image, index) in images"
       :key="index"
-      class="relative mb-6 overflow-hidden pil"
-      :data-index="index"
-    >
-      <img
-        class="pil-tiny max-w-full filter blur-lg transform scale-110"
-        :src="require('./assets/images/tiny-' + image.image).default"
-        :width="image.width"
-        :height="image.height"
-        alt=""
       >
-      <img
-        v-if="image.shouldLoad"
-        class="pil-original absolute top-0 left-0 w-full transition duration-1000"
-        :class="{ 'opacity-0': !image.loaded }"
-        :src="require('./assets/images/' + image.image).default"
-        :width="image.width"
-        :height="image.height"
-        @load="originalImageLoaded(index)"
-        alt=""
+      <span
+        class="inline-flex relative mb-6 overflow-hidden pil"
+        :data-index="index"
       >
-    </div>
+        <img
+          class="pil-tiny max-w-full max-h-full object-contain"
+          :style="`filter: url(#sharpBlur);`"
+          :src="require('./assets/images/tiny-' + image.image).default"
+          :width="image.width"
+          :height="image.height"
+          alt=""
+        >
+        <img
+          v-if="image.shouldLoad"
+          class="pil-original absolute top-0 left-0 w-full h-full transition duration-500 object-contain"
+          :class="{ 'opacity-0': !image.loaded }"
+          :src="require('./assets/images/' + image.image).default"
+          :width="image.width"
+          :height="image.height"
+          @load="originalImageLoaded(index)"
+          alt=""
+        >
+      </span>
+    </span>
   </div>
 </template>
 
@@ -76,4 +88,15 @@ export default {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hideSvgSoThatItSupportsFirefox {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
 </style>
