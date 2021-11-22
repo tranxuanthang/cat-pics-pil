@@ -12,12 +12,12 @@
   </svg>
 
   <div class="w-full max-w-screen-xl mx-auto">
-    <span class="block flex justify-center max-h-[30vh]"
+    <span class="block flex justify-center mb-6 mx-auto max-h-[50vh]"
       v-for="(image, index) in images"
       :key="index"
       >
       <span
-        class="inline-flex relative mb-6 overflow-hidden pil"
+        class="inline-flex relative pil"
         :data-index="index"
       >
         <img
